@@ -39,15 +39,16 @@ int main(void) {
 
   printf("Digite a expressao com todos parenteses: ");
   char expressao[100];
-  cin >> expressao;
+  cin.getline(expressao, 100);
 
   posfixa_simples(&pilha, expressao);
 
   printf("\n Imprimindo expressao posfixa: \n");
 
-  for (int i = 0; i < MAX; i++) {
-    printf("%d ", pilha.dados[i].campo);
+  for (int i = 0; i < pilha.qtdeAtual; i++) {
+    printf("%c ", pilha.dados[i].campo);
   }
 
+  printf("\n");
   return 0;
 }
