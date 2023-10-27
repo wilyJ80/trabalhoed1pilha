@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int const max = 5;
+int const max = 20;
 #define MAX 5
 
 struct T_Item {
