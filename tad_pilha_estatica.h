@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int const max = 20;
-#define MAX 5
+// Alterado de 5 para 99: tamanho vetor expressao
+int const max = 99;
 
 struct T_Item {
   int campo;
