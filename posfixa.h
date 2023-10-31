@@ -6,7 +6,7 @@
 
 enum Operacoes { MULT = '*', SOMA = '+', SUB = '-', DIV = '/' };
 
-void posfixa_simples(T_Pilha *plOutput, char exp[]) {
+void gerar_posfixa(T_Pilha *plOutput, char exp[]) {
 
   T_Pilha plOperadores;
   iniciarPilha(&plOperadores);

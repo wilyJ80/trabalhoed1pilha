@@ -4,13 +4,13 @@
 
 int main(void) {
 
-  // input expressao
-  char expressao[max] = "(2+2)";
+  char expressao[max];
+  scanf("%s", expressao);
 
   T_Pilha pilha;
   iniciarPilha(&pilha);
 
-  posfixa_simples(&pilha, expressao);
+  gerar_posfixa(&pilha, expressao);
 
   listar_pilha(&pilha);
 
