@@ -1,3 +1,6 @@
+#ifndef POSFIXA_H
+#define POSFIXA_H
+
 #include "tad_pilha_estatica.h"
 #include <string.h>
 
@@ -32,3 +35,5 @@ void posfixa_simples(T_Pilha *plOutput, char exp[]) {
     }
   }
 }
+
+#endif

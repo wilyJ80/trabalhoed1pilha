@@ -1,3 +1,6 @@
+#ifndef TAD_PILHA_ESTATICA_H
+#define TAD_PILHA_ESTATICA_H
+
 #include <stdio.h>
 
 // Alterado de 5 para 99: tamanho vetor expressao
@@ -49,3 +52,5 @@ int remover(T_Pilha *pilha) {
 
   return flag;
 }
+
+#endif

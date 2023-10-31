@@ -1,3 +1,4 @@
+#include "minhasfuncoes.h"
 #include "posfixa.h"
 #include <stdio.h>
 
@@ -10,7 +11,8 @@ int main(void) {
   iniciarPilha(&pilha);
 
   posfixa_simples(&pilha, expressao);
-  // continuar: imprimir expressao
+
+  listar_pilha(&pilha);
 
   return 0;
 }
