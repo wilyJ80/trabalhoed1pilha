@@ -1,7 +1,10 @@
+#ifndef TAD_PILHA_ESTATICA_H
+#define TAD_PILHA_ESTATICA_H
+
 #include <stdio.h>
 
-int const max = 20;
-#define MAX 5
+// Alterado de 5 para 99: tamanho vetor expressao
+int const max = 99;
 
 struct T_Item {
   int campo;
@@ -49,3 +52,5 @@ int remover(T_Pilha *pilha) {
 
   return flag;
 }
+
+#endif
