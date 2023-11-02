@@ -10,16 +10,13 @@ int main(void) {
 
   T_Pilha pilhaExpressao;
   iniciarPilha(&pilhaExpressao);
-
   gerar_posfixa(&pilhaExpressao, expressao);
   listar_pilha(&pilhaExpressao);
 
   T_Pilha pilhaResultado;
   iniciarPilha(&pilhaResultado);
-
-  // continuar aqui: fazer funcao calcular em minhas_funcoes.h
-  // calcular resultado
-  // imprimir
+  calcular_resultado(&pilhaExpressao, &pilhaResultado);
+  printf("%d", pilhaResultado.topo);
 
   return 0;
 }
