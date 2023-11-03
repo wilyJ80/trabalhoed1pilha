@@ -15,6 +15,29 @@ void listar_pilha(T_Pilha *pilhaExpressao) {
   printf("\n");
 }
 
+// foi necessaria essa funcao, pois a funcao remover definida em
+// "tad_pilha_estatica.h" retorna flag, nao o valor desempilhado
+
+int meuDesempilhar(T_Pilha *pilha) {
+  /*   int flag;
+
+    if (chkPilhaVazia(pilha))
+      flag = 0;
+    else { */
+
+  int index = (*pilha).qtdeAtual - 1;
+  int aDesempilhar = (*pilha).dados[index].campo;
+
+  (*pilha).topo--;
+  (*pilha).qtdeAtual--;
+
+  return aDesempilhar;
+
+  /* flag = 1; */
+
+  /*   return flag; */
+}
+
 void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
 
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
@@ -22,7 +45,9 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
 
     if (isdigit(aSerTestado->campo)) {
 
+      // operacao ASCII
       int value = aSerTestado->campo - '0';
+
       T_Item item;
       item.campo = value;
       inserir(pilhaResultado, item);
@@ -30,8 +55,8 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
 
     else if (strchr("+-*/", aSerTestado->campo)) {
 
-      int operador1 = remover(pilhaResultado);
-      int operador2 = remover(pilhaResultado);
+      int operador1 = meuDesempilhar(pilhaResultado);
+      int operador2 = meuDesempilhar(pilhaResultado);
       int resultado;
 
       switch (aSerTestado->campo) {

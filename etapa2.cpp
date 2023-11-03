@@ -16,7 +16,8 @@ int main(void) {
   T_Pilha pilhaResultado;
   iniciarPilha(&pilhaResultado);
   calcular_resultado(&pilhaExpressao, &pilhaResultado);
-  printf("%d", pilhaResultado.topo);
+
+  printf("%d ", pilhaResultado.dados[0].campo);
 
   return 0;
 }
