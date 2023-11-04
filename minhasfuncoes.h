@@ -61,20 +61,21 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
 
       switch (aSerTestado->campo) {
 
+        // atencao na ordem dos operadores! estamos desempilhando...
       case '+':
-        resultado = operador1 + operador2;
+        resultado = operador2 + operador1;
         break;
 
       case '-':
-        resultado = operador1 - operador2;
+        resultado = operador2 - operador1;
         break;
 
       case '*':
-        resultado = operador1 * operador2;
+        resultado = operador2 * operador1;
         break;
 
       case '/':
-        resultado = operador1 / operador2;
+        resultado = operador2 / operador1;
         break;
       }
 
