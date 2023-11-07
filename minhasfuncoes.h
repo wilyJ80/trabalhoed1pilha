@@ -9,8 +9,11 @@
 void listar_pilha(T_Pilha *pilhaExpressao) {
 
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
-
-    printf("%c ", pilhaExpressao->dados[i].campo);
+  	if(strchr("+-*/",(char)pilhaExpressao->dados[i].campo)){
+  		printf("%c",(char)pilhaExpressao->dados[i].campo);
+}
+	  else
+    	printf("%.2f ", pilhaExpressao->dados[i].campo);
   }
   printf("\n");
 }
@@ -43,7 +46,7 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
     T_Item *aSerTestado = &pilhaExpressao->dados[i];
 
-    if (isdigit(aSerTestado->campo)) {
+    if (isdigit((int)aSerTestado->campo)) {
 
       // operacao ASCII
       int value = aSerTestado->campo - '0';
@@ -59,7 +62,7 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
       int operador2 = meuDesempilhar(pilhaResultado);
       int resultado;
 
-      switch (aSerTestado->campo) {
+      switch ((int)aSerTestado->campo) {
 
         // atencao na ordem dos operadores! estamos desempilhando...
       case '+':

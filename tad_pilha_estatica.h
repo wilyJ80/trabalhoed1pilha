@@ -7,7 +7,7 @@
 int const max = 99;
 
 struct T_Item {
-  int campo;
+  double campo;
 };
 
 struct T_Pilha {
