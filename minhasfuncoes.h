@@ -9,11 +9,10 @@
 void listar_pilha(T_Pilha *pilhaExpressao) {
 
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
-  	if(strchr("+-*/",(char)pilhaExpressao->dados[i].campo)){
-  		printf("%c",(char)pilhaExpressao->dados[i].campo);
-}
-	  else
-    	printf("%.2f ", pilhaExpressao->dados[i].campo);
+    if (strchr("+-*/", (char)pilhaExpressao->dados[i].campo)) {
+      printf("%c ", (char)pilhaExpressao->dados[i].campo);
+    } else
+      printf("%.0f ", pilhaExpressao->dados[i].campo - '0');
   }
   printf("\n");
 }
@@ -58,9 +57,9 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
 
     else if (strchr("+-*/", aSerTestado->campo)) {
 
-      int operador1 = meuDesempilhar(pilhaResultado);
-      int operador2 = meuDesempilhar(pilhaResultado);
-      int resultado;
+      double operador1 = meuDesempilhar(pilhaResultado);
+      double operador2 = meuDesempilhar(pilhaResultado);
+      double resultado;
 
       switch ((int)aSerTestado->campo) {
 
