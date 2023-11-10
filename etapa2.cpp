@@ -10,7 +10,8 @@ int main(void) {
 
   T_Pilha pilhaExpressao;
   iniciarPilha(&pilhaExpressao);
-  gerar_posfixa(&pilhaExpressao, expressao);
+  meuGerarPosfixa(&pilhaExpressao, expressao);
+  // ???
   listar_pilha(&pilhaExpressao);
 
   T_Pilha pilhaResultado;

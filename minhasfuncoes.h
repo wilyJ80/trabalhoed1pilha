@@ -86,4 +86,62 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
   }
 }
 
+void meuGerarPosfixa(T_Pilha *plOutput, char exp[]) {
+  T_Pilha plOperadores;
+  iniciarPilha(&plOperadores);
+
+  T_Item item;
+
+  // Create a copy of the input expression
+  char expCopy[max];
+  strncpy(expCopy, exp, sizeof(expCopy));
+
+  // Pegar numeros
+  const char delimNum[] = "(+-*/)";
+  char *tokenNum;
+
+  tokenNum = strtok(expCopy, delimNum);
+
+  while (tokenNum != NULL) {
+    item.campo = atoi(tokenNum);
+    inserir(plOutput, item);
+
+    tokenNum = strtok(NULL, delimNum);
+  }
+
+  // Create a copy of the input expression
+  char expCopy2[max];
+  strncpy(expCopy2, exp, sizeof(expCopy2));
+
+  // Pegar operadores
+  const char delimOperador[] = "(0123456789)";
+  char *tokenOperador;
+
+  tokenOperador = strtok(expCopy2, delimOperador);
+
+  while (tokenOperador != NULL) {
+    item.campo = *tokenOperador;
+    inserir(&plOperadores, item);
+
+    tokenOperador = strtok(NULL, delimOperador);
+
+    // Create a copy of the input expression
+    char expCopy3[max];
+    strncpy(expCopy3, exp, sizeof(expCopy3));
+
+    // Pegar parentese fechando
+    const char delimParentese[] = "0123456789+-*/";
+    char *tokenParentese;
+
+    tokenParentese = strtok(expCopy3, delimParentese);
+
+    while (tokenParentese != NULL) {
+      item.campo = *tokenParentese;
+      inserir(plOutput, plOperadores.dados[plOperadores.topo - 1]);
+      remover(&plOperadores);
+
+      tokenParentese = strtok(NULL, delimParentese);
+    }
+  }
+}
 #endif
