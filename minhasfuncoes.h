@@ -10,7 +10,13 @@ void listar_pilha(T_Pilha *pilhaExpressao) {
 
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
 
-    printf("%c ", pilhaExpressao->dados[i].campo);
+    if (pilhaExpressao->dados[i].flagZeroIntUmChar == 0) {
+
+      printf("%d ", pilhaExpressao->dados[i].campo);
+    } else {
+
+      printf("%c ", pilhaExpressao->dados[i].campo);
+    }
   }
   printf("\n");
 }
@@ -104,6 +110,7 @@ void meuGerarPosfixa(T_Pilha *plOutput, char exp[]) {
 
   while (tokenNum != NULL) {
     item.campo = atoi(tokenNum);
+    item.flagZeroIntUmChar = 0;
     inserir(plOutput, item);
 
     tokenNum = strtok(NULL, delimNum);
@@ -121,27 +128,30 @@ void meuGerarPosfixa(T_Pilha *plOutput, char exp[]) {
 
   while (tokenOperador != NULL) {
     item.campo = *tokenOperador;
+    item.flagZeroIntUmChar = 1;
     inserir(&plOperadores, item);
 
     tokenOperador = strtok(NULL, delimOperador);
+  }
 
-    // Create a copy of the input expression
-    char expCopy3[max];
-    strncpy(expCopy3, exp, sizeof(expCopy3));
+  // Create a copy of the input expression
+  char expCopy3[max];
+  strncpy(expCopy3, exp, sizeof(expCopy3));
 
-    // Pegar parentese fechando
-    const char delimParentese[] = "0123456789+-*/";
-    char *tokenParentese;
+  // Pegar parentese fechando
+  const char delimParentese[] = "0123456789+-*/(";
+  char *tokenParentese;
 
-    tokenParentese = strtok(expCopy3, delimParentese);
+  tokenParentese = strtok(expCopy3, delimParentese);
 
-    while (tokenParentese != NULL) {
-      item.campo = *tokenParentese;
-      inserir(plOutput, plOperadores.dados[plOperadores.topo - 1]);
-      remover(&plOperadores);
+  while (tokenParentese != NULL) {
+    item.campo = *tokenParentese;
+    item.flagZeroIntUmChar = 1;
+    inserir(plOutput, plOperadores.dados[plOperadores.topo - 1]);
+    remover(&plOperadores);
 
-      tokenParentese = strtok(NULL, delimParentese);
-    }
+    tokenParentese = strtok(NULL, delimParentese);
   }
 }
+
 #endif

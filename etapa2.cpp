@@ -19,6 +19,7 @@ int main(void) {
   calcular_resultado(&pilhaExpressao, &pilhaResultado);
 
   printf("%d ", pilhaResultado.dados[0].campo);
+  printf("\n");
 
   return 0;
 }
