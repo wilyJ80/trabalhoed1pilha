@@ -128,28 +128,9 @@ void meuGerarPosfixa(T_Pilha *plOutput, char exp[]) {
   while (tokenOperador != NULL) {
     item.campo = *tokenOperador;
     item.flagZeroIntUmChar = 1;
-    inserir(&plOperadores, item);
+    inserir(plOutput, item);
 
     tokenOperador = strtok(NULL, delimOperador);
-  }
-
-  // Create a copy of the input expression
-  char expCopy3[max];
-  strncpy(expCopy3, exp, sizeof(expCopy3));
-
-  // Pegar parentese fechando
-  const char delimParentese[] = "0123456789+-*/(";
-  char *tokenParentese;
-
-  tokenParentese = strtok(expCopy3, delimParentese);
-
-  while (tokenParentese != NULL) {
-    item.campo = *tokenParentese;
-    item.flagZeroIntUmChar = 1;
-    inserir(plOutput, plOperadores.dados[plOperadores.topo - 1]);
-    remover(&plOperadores);
-
-    tokenParentese = strtok(NULL, delimParentese);
   }
 }
 
