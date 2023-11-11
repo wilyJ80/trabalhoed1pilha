@@ -11,3 +11,5 @@ echo "(4*(8+6))" |
 echo "test 3"
 echo "((4+8)/(6-2))" |
 	./etapa2
+
+echo $var

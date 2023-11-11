@@ -49,17 +49,16 @@ void calcular_resultado(T_Pilha *pilhaExpressao, T_Pilha *pilhaResultado) {
   for (int i = 0; i < pilhaExpressao->qtdeAtual; i++) {
     T_Item *aSerTestado = &pilhaExpressao->dados[i];
 
-    if (isdigit(aSerTestado->campo)) {
+    if (aSerTestado->flagZeroIntUmChar == 0) {
 
-      // operacao ASCII
-      int value = aSerTestado->campo - '0';
+      int value = aSerTestado->campo;
 
       T_Item item;
       item.campo = value;
       inserir(pilhaResultado, item);
     }
 
-    else if (strchr("+-*/", aSerTestado->campo)) {
+    else {
 
       int operador1 = meuDesempilhar(pilhaResultado);
       int operador2 = meuDesempilhar(pilhaResultado);
