@@ -10,7 +10,8 @@ int main(void) {
 
   T_Pilha pilhaExpressao;
   iniciarPilha(&pilhaExpressao);
-  gerar_posfixa(&pilhaExpressao, expressao);
+  meuGerarPosfixa(&pilhaExpressao, expressao);
+  // ???
   listar_pilha(&pilhaExpressao);
 
   T_Pilha pilhaResultado;
@@ -18,6 +19,7 @@ int main(void) {
   calcular_resultado(&pilhaExpressao, &pilhaResultado);
 
   printf("%d ", pilhaResultado.dados[0].campo);
+  printf("\n");
 
   return 0;
 }

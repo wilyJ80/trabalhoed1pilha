@@ -8,6 +8,7 @@ int const max = 99;
 
 struct T_Item {
   int campo;
+  int flagZeroIntUmChar;
 };
 
 struct T_Pilha {
